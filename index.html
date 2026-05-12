@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Money Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header: Balance -->
+        <header class="card balance-card">
+            <h2>Tổng Số Dư</h2>
+            <h1 id="total-balance">0 đ</h1>
+            <div class="summary">
+                <div class="summary-item income">
+                    <p>Tổng Thu</p>
+                    <h3 id="total-income">+0 đ</h3>
+                </div>
+                <div class="divider"></div>
+                <div class="summary-item expense">
+                    <p>Tổng Chi</p>
+                    <h3 id="total-expense">-0 đ</h3>
+                </div>
+            </div>
+        </header>
+
+        <!-- Form: Add Transaction -->
+        <section class="card form-card">
+            <h3>Thêm Giao Dịch</h3>
+            <form id="transaction-form">
+                <div class="segmented-control">
+                    <input type="radio" id="type-income" name="type" value="income" checked>
+                    <label for="type-income">Thu</label>
+                    <input type="radio" id="type-expense" name="type" value="expense">
+                    <label for="type-expense">Chi</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Tên giao dịch</label>
+                    <input type="text" id="name" placeholder="Ví dụ: Lương tháng 10" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Danh mục</label>
+                        <select id="category" required>
+                            <!-- Options will be populated by JS -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Số tiền</label>
+                        <input type="number" id="amount" placeholder="0" min="1" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Thêm Giao Dịch</button>
+            </form>
+        </section>
+
+        <!-- Transaction List -->
+        <section class="card list-card">
+            <h3>Lịch Sử Giao Dịch</h3>
+            <ul id="transaction-list" class="transaction-list">
+                <!-- Transactions will be rendered here -->
+            </ul>
+        </section>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3>Xóa giao dịch?</h3>
+            <p>Hành động này không thể hoàn tác.</p>
+            <div class="modal-actions">
+                <button id="cancel-btn" class="btn-secondary">Hủy</button>
+                <button id="confirm-btn" class="btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">Thành công!</div>
+
+    <script src="app.js"></script>
+</body>
+</html>

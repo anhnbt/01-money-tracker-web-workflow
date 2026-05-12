@@ -57,3 +57,6 @@ out/
 .idea/
 .vscode/
 *.swp
+
+# Netlify
+.netlify/
